@@ -1,0 +1,179 @@
+<section
+  class="relative h-screen overflow-hidden bg-cover bg-center"
+  style="background-image: url('/hero.jpg');"
+>
+  <!-- 暗くする -->
+  <div class="absolute inset-0 bg-black/15"></div>
+
+  <!-- 上下グラデ -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70"></div>
+
+  <!-- 中央 -->
+  <div class="relative z-10 flex h-full items-center justify-center">
+    <div class="text-center text-white">
+
+      <p class="mb-4 text-sm tracking-[0.5em] uppercase text-gray-300">
+        Traditional Stay in Takayama
+      </p>
+
+      <h1 class="mb-6 text-5xl font-serif leading-tight md:text-8xl">
+        飛騨高山庵
+      </h1>
+
+      <p class="mb-10 text-lg tracking-[0.2em] text-gray-200">
+        時を重ねる、歴史の街に泊まる。
+      </p>
+
+<button
+  id="openBookingModal"
+  class="group inline-flex items-center gap-4 text-white"
+>
+  <span class="border-b border-white/40 pb-2 text-sm tracking-[0.4em] transition group-hover:border-white">
+    宿泊予約
+  </span>
+
+  <span class="translate-y-[1px] text-lg transition duration-300 group-hover:translate-x-2">
+    →
+  </span>
+</button>
+
+    </div>
+  </div>
+
+<!-- PCナビ -->
+<nav class="absolute bottom-0 left-0 z-20 hidden w-full border-y border-white/20 bg-black/35 backdrop-blur-md md:block">
+  <ul class="mx-auto grid max-w-5xl grid-cols-5 text-center text-white">
+    <li><a href="#about" class="block py-5 text-sm tracking-[0.2em] hover:bg-white/10">庵について</a></li>
+    <li><a href="#rooms" class="block py-5 text-sm tracking-[0.2em] hover:bg-white/10">お部屋</a></li>
+    <li><a href="#tourism" class="block py-5 text-sm tracking-[0.2em] hover:bg-white/10">高山観光</a></li>
+    <li><a href="#access" class="block py-5 text-sm tracking-[0.2em] hover:bg-white/10">アクセス</a></li>
+    <li><a href="#contact" class="block py-5 text-sm tracking-[0.2em] hover:bg-white/10">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- スマホ用メニューボタン -->
+<button
+  id="openMenu"
+  class="fixed right-5 top-5 z-50 rounded-full border border-white/30 bg-black/30 px-5 py-3 text-sm tracking-[0.25em] text-white backdrop-blur-md md:hidden"
+>
+  MENU
+</button>
+
+<!-- スマホメニュー -->
+<div
+  id="mobileMenu"
+  class="fixed inset-0 z-50 hidden bg-black/90 px-8 py-8 text-white backdrop-blur-md md:hidden"
+>
+  <div class="mb-16 flex items-center justify-between">
+    <p class="font-serif text-2xl tracking-[0.25em]">庵</p>
+
+    <button id="closeMenu" class="text-3xl">
+      ×
+    </button>
+  </div>
+
+  <nav class="grid gap-8 text-xl tracking-[0.25em]">
+    <a href="#about" class="mobile-link">庵について</a>
+    <a href="#rooms" class="mobile-link">お部屋</a>
+    <a href="#tourism" class="mobile-link">高山観光</a>
+    <a href="#access" class="mobile-link">アクセス</a>
+    <a href="#contact" class="mobile-link">お問い合わせ</a>
+  </nav>
+</div>
+
+<script>
+  const openMenu = document.getElementById("openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  openMenu?.addEventListener("click", () => {
+    mobileMenu?.classList.remove("hidden");
+  });
+
+  closeMenu?.addEventListener("click", () => {
+    mobileMenu?.classList.add("hidden");
+  });
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  });
+</script>
+</section>
+
+<!-- 予約ポップアップ -->
+<div
+  id="bookingModal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-6 backdrop-blur-sm"
+>
+  <div class="relative w-full max-w-2xl rounded-2xl bg-[#111111] p-8 text-white shadow-2xl border border-white/10">
+
+    <button
+      id="closeBookingModal"
+      class="absolute right-5 top-5 text-2xl text-gray-400 transition hover:text-white"
+    >
+      ×
+    </button>
+
+    <div class="mb-8 text-center">
+      <p class="mb-3 text-sm tracking-[0.4em] text-gray-400">
+        BOOKING
+      </p>
+
+      <h2 class="text-3xl font-serif">
+        ご予約サイトをお選びください
+      </h2>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+
+      <a
+        href="https://www.airbnb.jp/"
+        target="_blank"
+        class="rounded-xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/10"
+      >
+        <p class="mb-2 text-2xl font-semibold">Airbnb</p>
+        <p class="text-sm leading-7 text-gray-400">
+          Airbnbで空室確認・ご予約
+        </p>
+      </a>
+
+      <a
+        href="https://www.booking.com/"
+        target="_blank"
+        class="rounded-xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/10"
+      >
+        <p class="mb-2 text-2xl font-semibold">Booking.com</p>
+        <p class="text-sm leading-7 text-gray-400">
+          Booking.comで空室確認・ご予約
+        </p>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const openButton = document.getElementById("openBookingModal");
+  const closeButton = document.getElementById("closeBookingModal");
+  const modal = document.getElementById("bookingModal");
+
+  openButton?.addEventListener("click", () => {
+    modal?.classList.remove("hidden");
+    modal?.classList.add("flex");
+  });
+
+  closeButton?.addEventListener("click", () => {
+    modal?.classList.add("hidden");
+    modal?.classList.remove("flex");
+  });
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  });
+</script>
